@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        dotnet 'dotnet-sdk-8'  // must be defined in Jenkins global tools config
+        dotnetsdk 'dotnet-sdk-8'  // must be defined in Jenkins global tools config
     }
 
     environment {
