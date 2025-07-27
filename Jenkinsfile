@@ -37,14 +37,26 @@ pipeline {
                 bat 'dotnet publish --configuration Release --output ./publish'
             }
         }
+
+        // stage('Publish Artifacts') {
+        //     steps {
+        //         sh 'dotnet publish -c Release -o publish'
+        //     }
+        // }
+
+        stage('Archive Build Output') {
+            steps {
+                archiveArtifacts artifacts: 'publish/**/*.*', fingerprint: true
+            }
+        }
     }
 
     post {
         success {
-            echo '✅ Build Succeeded!'
+            echo '✅ Build & Artifact creation successful!'
         }
         failure {
-            echo '❌ Build Failed. Check logs.'
+            echo '❌ Build failed. Please check logs.'
         }
     }
 }
