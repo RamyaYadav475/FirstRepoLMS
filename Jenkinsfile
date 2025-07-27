@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Restore') {
             steps {
-                echo '🔄 Restoring dependencies...'
+                echo '🔄 Restoring dependencies, downloading or installing all dependencies required to run the project...'
                 bat 'dotnet restore'
             }
         }
